@@ -9,14 +9,15 @@ from matplotlib.animation import FuncAnimation
 from bleak import BleakScanner, BleakClient
 
 # ==============================================================================
-# ===== WORKSPACE CONFIGURATION ================================================
+# ===== WORKSPACE & DIRECTORY CONFIGURATION ===================================
 # ==============================================================================
 
 DEVICE_NAME = "241504D"  # Matches your Arduino BLE local name
+ACCELNGYRO_UUID = "f509416c-3c4b-401e-a768-b25a9e621a91"
 
-# Dynamically save files relative to where this project folder lives
+# Dynamically save files inside 'data_log/data_eish'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FOLDER_PATH = os.path.join(BASE_DIR, "data_logs")
+FOLDER_PATH = os.path.join(BASE_DIR, "data_log", "data_eish")
 os.makedirs(FOLDER_PATH, exist_ok=True)
 
 timestamp_str = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -30,8 +31,6 @@ try:
 except Exception as e:
     print(f"❌ Could not create logfile: {e}")
     exit(1)
-
-ACCELNGYRO_UUID = "f509416c-3c4b-401e-a768-b25a9e621a91"
 
 # ==============================================================================
 
@@ -50,7 +49,7 @@ def notification_handler(characteristic, data):
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
             file.write(f"{timestamp},{','.join(map(str, floats))}\n")
             file.flush() 
-    except Exception as e:
+    except Exception:
         pass  # Silently handle transient packet drops
 
 async def run_ble():
@@ -144,3 +143,11 @@ if __name__ == "__main__":
     finally:
         file.close()
         print(f"🔒 Data streams safely closed. Logfile preserved at:\n   -> {FILE_PATH}")
+## so everythime you run this,# 1. Stage the new log files and graphs
+##git add -f data_log/data_eish
+
+# 2. Commit the new data snapshot
+##git commit -m "Add new IMU run log and graph"
+
+# 3. Push to your eish branch
+##git push origin eish
