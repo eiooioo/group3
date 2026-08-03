@@ -12,7 +12,7 @@ from bleak import BleakScanner, BleakClient
 # ===== WORKSPACE CONFIGURATION ================================================
 # ==============================================================================
 
-DEVICE_NAME = "241504D"  # Matches your Arduino BLE local name
+DEVICE_NAME = "Kevin's Nesso"  # Matches your Arduino BLE local name
 
 # Dynamically save files relative to where this project folder lives
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
