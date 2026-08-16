@@ -6,6 +6,14 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import os
 
+# Determine path relative to app.py location
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+file_name = os.path.join(BASE_DIR, "all_workers.xlsx")
+
+if not os.path.exists(file_name):
+    # Fallback to root directory if placed in root
+    file_name = "all_workers.xlsx"
+
 # Page Configuration
 st.set_page_config(
     page_title="Worker Safety & Fall Detection Dashboard",
