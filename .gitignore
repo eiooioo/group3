@@ -1,5 +1,14 @@
-﻿.venv/
+﻿# Virtual Environment
+.venv/
+venv/
+env/
+
+# Databases & Local Logs
+*.db
+*.sqlite3
+data/
+
+# Python Bytecode & Cache
 __pycache__/
-data_logs/
-*.png
-.vscode/
+*.pyc
+.ipynb_checkpoints/
