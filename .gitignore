@@ -7,8 +7,11 @@ env/
 *.db
 *.sqlite3
 data/
+data_log/
 
 # Python Bytecode & Cache
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+

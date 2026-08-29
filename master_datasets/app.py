@@ -11,7 +11,7 @@ st.set_page_config(page_title="Real-Time Fall Monitor", layout="wide")
 # Refresh every 1000ms (1 second)
 st_autorefresh(interval=1000, key="datarefresh")
 
-st.title("⚡ Real-Time SQLite Fall Monitoring Dashboard")
+st.title("Worker Safety Overview & Fall Analytics")
 
 # Threshold Sliders
 acc_threshold = st.sidebar.slider("Acc Threshold (g)", 1.5, 5.0, 3.0, 0.1)

@@ -16,7 +16,7 @@ if not os.path.exists(file_name):
 
 # Page Configuration
 st.set_page_config(
-    page_title="Worker Safety & Fall Detection Dashboard",
+    page_title="Worker Safety Overview & Fall Analytics",
     layout="wide",
     initial_sidebar_state="expanded"
 )
